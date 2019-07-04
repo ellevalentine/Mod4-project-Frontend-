@@ -18,8 +18,14 @@ const Header = props => (
     <nav className="navbar navbar-default navbar-fixed-top">
       <div className="container">
         <div className="navbar-header">
+        <img
+            src="https://images-na.ssl-images-amazon.com/images/I/61QQXwsBWmL._SX466_.jpg"
+            className="App-logo"
+            alt="logo"
+          />
+            <h1 className="Title">Hog Bank</h1>
+            <br/>
           <div className="navbar-brand">
-            <h1>Hog Bank</h1>
             <Link className="Homepage-link" to="/">
               Home Page
             </Link>
@@ -35,21 +41,7 @@ const Header = props => (
     </nav>
 
     <Link to="/">
-      <img
-        src="https://images-na.ssl-images-amazon.com/images/I/61QQXwsBWmL._SX466_.jpg"
-        className="App-logo"
-        alt="logo"
-      />
     </Link>
-    <h1 className="App-title">
-      {props.username ? `Welcome back, ${props.username}!` : "Welcome!"}
-      <br />
-      {props.username && (
-        <Button onClick={props.signout} variant="contained" color="secondary">
-          SIGN OUT
-        </Button>
-      )}
-    </h1>
   </header>
 );
 
