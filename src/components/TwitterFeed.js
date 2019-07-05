@@ -1,4 +1,5 @@
 import React from "react";
+import TwitterScript from "../pages/Script.js"
 
 import {
   TwitterTimelineEmbed,
@@ -18,11 +19,12 @@ import {
 class TwitterFeed extends React.Component {
   render() {
   return (
-      <div>
-  <a className="twitter-timeline" data-width="250" data-height="500" href="https://twitter.com/ftmoney?ref_src=twsrc%5Etfw">Tweets by ftmoney</a> <script async src="https://platform.twitter.com/widgets.js" charSet="utf-8"></script>
+<div className="twitter-container">
+  <a className="twitter-timeline" data-width="250" data-height="750" href="https://twitter.com/ftmoney?ref_src=twsrc%5Etfw">Tweets by ftmoney</a><TwitterScript/> 
   </div>
   )
 }
 }
 export default TwitterFeed;
 
+{/* <script defer src="https://platform.twitter.com/widgets.js" charSet="utf-8"></script> */}

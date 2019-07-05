@@ -67,6 +67,14 @@ class App extends Component {
       });
     }
   }
+
+  reloadTwitter = () => {
+    const twitter = document.querySelector('.twitter-container');
+    const script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = 'https://platform.twitter.com/widgets.js';
+    twitter.appendChild(script);
+  }
   //------------------------------------------------------------------------------------------------------------------
 
   // render component
@@ -79,7 +87,7 @@ class App extends Component {
       <div className="App">
         <Header username={username} signout={signout} />
         <Switch>
-          <Route exact path="/" component={props => <HomePage {...props} />} />
+          <Route exact path="/" onChange={this.reloadTwitter} component={props => <HomePage {...props} />} />
           <Route
             path="/signin"
             component={props => <SignInForm signin={signin} {...props} />}

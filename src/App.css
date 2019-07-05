@@ -1,63 +1,88 @@
-.Homepage-link, .Homepage-link:active, .Homepage-link:hover {
-  padding: 60px 25px;
-  color: black;
-  text-decoration: none;
-  text-align: right
+body {
+  font-family: 'Quicksand', sans-serif;
+  margin: 10px 20px
 }
+
+.twitter-container {
+  float: right
+}
+
+.welcome {
+  text-align: center;
+  display: inline;
+  margin-top: auto;
+}
+
+.App-header {
+  /* font-family: 'Montserrat', sans-serif; */
+  /* font-family: 'Raleway', sans-serif; */
+  /* font-family: 'Open Sans Condensed', sans-serif; */
+  font-family: 'Quicksand', sans-serif;
+}
+
+.App-logo {
+  /* animation: App-logo-spin infinite 20s linear; */
+  height: 10vmin;
+  margin: none;
+  padding: none
+}
+
+.navbar {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: white;
+  position: sticky;
+  top: 0; 
+  width: 100%;
+  display: flex
+}
+
+.Homepage-link, .Homepage-link:active, .Homepage-link:hover {
+  float: right;
+  font-size: larger
+}
+
+a, a:hover, a:active{
+  text-decoration: none;
+  color: #716F72;
+  position: relative;
+}
+
+.navbar-link, .navbar-link:active, .navbar-link:hover {
+  float: left;
+  display: block;
+  color: #716F72;
+  padding: 10px 12px;
+  text-decoration: none;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.title {
+  margin-right: auto;
+  font-size: larger
+} 
 
 .Inline{
   display: inline-block
 }
 
-.App {
-  /* text-align: center; */
+.form-headers {
+  font-size: larger;
+  /* color: #716F72; */
+  color: #1A7874
 }
 
-.App-logo {
-  /* animation: App-logo-spin infinite 20s linear; */
-  height: 20vmin;
-}
-/* 
-.App-header {
-  background-color: #ffffff;
-  display: flex;
-  flex-direction: row;
-  font-size: calc(10px + 2vmin);
-  color: rgb(7, 7, 7);
-} */
-
-.App-link {
-  color: #61dafb;
-}
-
-.App-title {
+.sign-in-up-form {
   text-align: center;
-  margin: 0
+  margin: 30px 30px
 }
 
+form {
 
-.navbar-header {
-  background-color: #ffffff;
-  display: flex;
-  flex-direction: row;
-  font-size: calc(10px + 2vmin);
-  color: rgb(7, 7, 7);
 }
-
-.navbar-brand, .navbar-brand:visited {
-  background-color: white;
-  color: black;
-  padding: 60px 25px;
-  text-decoration: none;
-  display: inline-block;
-  text-align: right
-}
-
-.title {
-  padding: 50%
-}
-
-
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -66,5 +91,3 @@
     transform: rotate(360deg);
   }
 }
-
-  /* justify-content: center; */

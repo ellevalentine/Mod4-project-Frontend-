@@ -15,40 +15,35 @@ import Button from "@material-ui/core/Button";
 
 const Header = props => (
   <header className="App-header">
-    <nav className="navbar navbar-default navbar-fixed-top">
-      <div className="container">
-        <div className="navbar-header">
-        <img
+    <nav className="navbar">
+        <div className="navbar-link"> 
+          <img
             src="https://images-na.ssl-images-amazon.com/images/I/61QQXwsBWmL._SX466_.jpg"
             className="App-logo"
             alt="logo"
           />
-            <h1 className="Title">Hog Bank</h1>
-            <br/>
-          <div className="navbar-brand">
-            <Link className="Homepage-link" to="/">
-              Home Page
-            </Link>
-            <Link className="Homepage-link" to="/signin">
-              SignIn
-            </Link>
-            <Link className="Homepage-link" to="/signup">
-              SignUp
-            </Link>
-          </div>
         </div>
-      </div>
+        <div className="navbar-link title">
+          <h1>Piggy Bank</h1>
+        </div>
+        <div className="navbar-link" >
+          <Link className="Homepage-link" to="/">
+            Home Page
+          </Link>
+        </div>
+        <div className="navbar-link" >
+          <Link className="Homepage-link" to="/signin">
+            SignIn
+          </Link>
+        </div>
+        <div className="navbar-link" >
+        <Link className="Homepage-link" to="/signup">
+          SignUp
+        </Link>
+        </div>
     </nav>
-
-    <Link to="/">
-    </Link>
   </header>
-);
-
-//------------------------------------------------------------------------------------------------------------------
-// EXPORT
-//------------------------------------------------------------------------------------------------------------------
+)
 
 export default Header;
 
-// if user name is not false then reuturn welcome back ..... => if it is falsey then return welcome to react.
