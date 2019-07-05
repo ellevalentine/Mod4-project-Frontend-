@@ -54,7 +54,6 @@ handleChange = event =>
     return (
       <div className="sign-in-up-form">
         <h3 className="form-headers"> Please Sign In:</h3>
-        <form>
         <TextField
           id='usernameInput'
           label='Username'
@@ -71,14 +70,12 @@ handleChange = event =>
           margin='normal'
           name='password'
           type='password'
-          onSubmit={handleSubmit}
         />
         <br />
         <br />
-        <Button type="submit" variant='contained' color='secondary'>
+        <Button type="submit" onClick={handleSubmit} variant='contained' color='secondary'>
           SUBMIT
         </Button>
-        </form>
        
       </div>
     )

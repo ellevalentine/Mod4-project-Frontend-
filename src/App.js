@@ -85,7 +85,7 @@ class App extends Component {
 
     return (
       <div className="App">
-        <Header username={username} signout={signout} />
+        <Header username={username} signout={signout} signin={signin}/>
         <Switch>
           <Route exact path="/" onChange={this.reloadTwitter} component={props => <HomePage {...props} />} />
           <Route

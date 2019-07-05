@@ -8,6 +8,7 @@ import React from 'react'
 import Item from '../components/Item'
 
 import {getInventory} from '../services/api'
+import Button from "@material-ui/core/Button";
 
 //------------------------------------------------------------------------------------------------------------------
 // INVENTORY CLASS
@@ -67,6 +68,16 @@ class Inventory extends React.Component {
     const { inventory } = this.state
 
     return (
+      <div>
+      <h1 className="welcome-text">
+      {this.props.username ? `Welcome back, ${this.props.username}!` : "Welcome!"}
+      <br />
+      {/* {this.props.username && (
+        <Button onClick={this.props.signout} variant="contained" color="secondary">
+          SIGN OUT
+        </Button>
+      )} */}
+    </h1>
       <div style={this.style} className='user-list'>
         <h3>Here's your inventory:</h3>
         { inventory.length === 0 && <p>Sorry, you don't have any items.</p>}
@@ -76,6 +87,8 @@ class Inventory extends React.Component {
           )
         }
       </div>
+
+    </div>
     )
   }
 }

@@ -1,18 +1,18 @@
 import React from "react";
 import TwitterScript from "../pages/Script.js"
 
-import {
-  TwitterTimelineEmbed,
-  TwitterShareButton,
-  TwitterFollowButton,
-  TwitterHashtagButton,
-  TwitterMentionButton,
-  TwitterTweetEmbed,
-  TwitterMomentShare,
-  TwitterDMButton,
-  TwitterVideoEmbed,
-  TwitterOnAirButton
-} from "react-twitter-embed";
+// import {
+//   TwitterTimelineEmbed,
+//   TwitterShareButton,
+//   TwitterFollowButton,
+//   TwitterHashtagButton,
+//   TwitterMentionButton,
+//   TwitterTweetEmbed,
+//   TwitterMomentShare,
+//   TwitterDMButton,
+//   TwitterVideoEmbed,
+//   TwitterOnAirButton
+// } from "react-twitter-embed";
 
 // const API = "https://gnip-stream.twitter.com/stream/powertrack/accounts/{gnip_account_name}/publishers/twitter/{stream_label}.json"
 
@@ -26,5 +26,3 @@ class TwitterFeed extends React.Component {
 }
 }
 export default TwitterFeed;
-
-{/* <script defer src="https://platform.twitter.com/widgets.js" charSet="utf-8"></script> */}
