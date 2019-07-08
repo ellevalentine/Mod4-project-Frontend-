@@ -64,6 +64,31 @@ export function createUser(username, password){
 }
 
 //------------------------------------------------------------------------------------------------------------------
+// create pot
+//------------------------------------------------------------------------------------------------------------------
+ 
+
+export function createPot(name, description, goal, date, id){ 
+    
+
+    
+    return fetch('http://localhost:3000/inventory', {
+       method: 'POST',
+       headers: {
+           'Content-Type': 'application/json'
+       },
+       body: JSON.stringify({
+           name: name,
+           description: description,
+           goal: goal,
+           date: date,
+           user_id: id
+       })
+   }).then(resp => resp.json()) //
+
+}
+
+//------------------------------------------------------------------------------------------------------------------
 // EXPORT
 //------------------------------------------------------------------------------------------------------------------
 

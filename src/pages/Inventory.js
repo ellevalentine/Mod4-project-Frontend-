@@ -10,6 +10,11 @@ import { getInventory } from "../services/api";
 import Button from "@material-ui/core/Button";
 import { createPots } from "../services/api";
 
+import NewPotForm from "../components/NewPot";
+
+
+
+
 //------------------------------------------------------------------------------------------------------------------
 // INVENTORY CLASS
 //------------------------------------------------------------------------------------------------------------------
@@ -27,6 +32,12 @@ class Inventory extends React.Component {
   style = {
     display: "flex",
     flexDirection: "column",
+    alignItems: "center",
+    flexWrap: "wrap"
+  };
+
+  stylePots = {
+    display: "flex",
     alignItems: "center",
     flexWrap: "wrap"
   };
@@ -90,10 +101,16 @@ class Inventory extends React.Component {
           </Button>
 
           {inventory.length === 0 && <p>Sorry, you don't have any items.</p>}
+          <div style={this.stylePots}>
           {inventory.map(item => (
             <Item key={item.id} item={item} />
           ))}
+          </div>
+          
         </div>
+        <div style={this.style}>
+            < NewPotForm userID={this.props.user.id} />
+            </div>
       </div>
     );
   }
