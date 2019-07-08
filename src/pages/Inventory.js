@@ -62,6 +62,10 @@ class Inventory extends React.Component {
     }
   }
 
+  addPot = () => {
+    console.log("hello")
+  }
+
 // render component
 //------------------------------------------------------------------------------------------------------------------
   render () {
@@ -80,7 +84,7 @@ class Inventory extends React.Component {
     </h1>
       <div style={this.style} className='user-list'>
         <h3>Here's your inventory:</h3>
-        <Button color='primary' variant='contained' onClick={addPot} >
+        <Button color='primary' variant='contained' onClick={this.addPot} >
       Add Savings Pot
        </Button>
 
