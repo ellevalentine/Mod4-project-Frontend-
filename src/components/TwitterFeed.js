@@ -22,8 +22,8 @@ class TwitterFeed extends React.Component {
       <div className="twitter-container">
         <a
           className="twitter-timeline"
-          data-width="250"
-          data-height="675"
+          // data-width="250"
+          // data-height="675"
           href="https://twitter.com/ftmoney?ref_src=twsrc%5Etfw"
         >
           Tweets by ftmoney
