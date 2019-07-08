@@ -10,7 +10,9 @@ import Header from './pages/Header'
 import SignInForm from './pages/SignInForm'
 import Inventory from './pages/Inventory'
 import SignUpForm from './pages/SignUpForm'
+// import Modal from './components/Modal'
 
+ 
 
 //grab the validate function from the api.js to use 
 import {validate} from './services/api'
@@ -26,7 +28,8 @@ class App extends Component {
 // initial state
 //------------------------------------------------------------------------------------------------------------------
   state = { // this is the initial state and when someone signsin this will be updated by the setState below
-    username:''
+    username:'',
+    user: []
   }
 //------------------------------------------------------------------------------------------------------------------
 
@@ -35,7 +38,9 @@ class App extends Component {
   // only one user can be signed in at once so when they are the username will be replaced eachtime
   //update sign in since it was expecting a string now it will be getting a little object with username and id
   signin = (user) => { 
+    
     this.setState({ username: user.username })
+    this.setState({ user: user })
     localStorage.setItem('token', user.token) // add token
     this.props.history.push('/inventory')
   }
@@ -71,12 +76,16 @@ signout = () => {
    }
  }
  //------------------------------------------------------------------------------------------------------------------
+// modal 
 
+
+
+ //------------------------------------------------------------------------------------------------------------------
 // render component
 //------------------------------------------------------------------------------------------------------------------
   render() {
     const {signin, signout} = this
-    const {username} = this.state // so we can pass the username down to the header to welcome the user
+    const {username, user} = this.state // so we can pass the username down to the header to welcome the user
 
     return (
       <div className="App">
@@ -84,7 +93,7 @@ signout = () => {
         <Switch> 
           <Route exact path='/' component={HomePage} />
           <Route path='/signin' component={props => <SignInForm signin={signin} {...props}/>} />
-          <Route path='/inventory' component={props => <Inventory username={username} {...props}/> } />
+          <Route path='/inventory' component={props => <Inventory username={username} user={user} {...props} /> } />
           <Route path='/signup' component={props => <SignUpForm signin={signin} {...props}/>} />
           <Route component={() => <h1>Page not found.</h1>} />
         </Switch>

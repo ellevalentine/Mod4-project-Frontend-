@@ -11,6 +11,7 @@ const signinURL = baseURL + '/signin'
 //------------------------------------------------------------------------------------------------------------------
  
  export function signin (username, password) {
+     
      return fetch(signinURL, {
          method: 'POST',
          headers: {'content-type': 'application/json'},
@@ -60,6 +61,29 @@ export function createUser(username, password){
             password: password
         })
     }).then(resp => resp.json()) //
+
+}
+
+
+//------------------------------------------------------------------------------------------------------------------
+// create pots
+//------------------------------------------------------------------------------------------------------------------
+ 
+
+export function createPots(){ 
+    
+
+    return fetch('http://localhost:3000/signup', {
+       method: 'POST',
+       headers: {
+           'Content-Type': 'application/json'
+       },
+       body: JSON.stringify({
+           name: "elle",
+           description: "hello how are you", 
+           user_id: 6
+       })
+   }).then(resp => resp.json()) //
 
 }
 

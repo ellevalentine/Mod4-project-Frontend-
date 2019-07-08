@@ -17,6 +17,7 @@ import Button from '@material-ui/core/Button'
 //------------------------------------------------------------------------------------------------------------------
  
 const Header = props =>
+
   <header className='App-header'>
 
   <nav className="navbar navbar-default navbar-fixed-top">
@@ -24,7 +25,7 @@ const Header = props =>
 				<div className="navbar-header">
 					<div className="navbar-brand">
           
-          <h1>Hog Bank</h1>
+          <h1>Piggie's Pocket</h1>
           <Link className="Homepage-link" to='/' >Home Page</Link> 
           <Link className="Homepage-link" to='/signin' >SignIn</Link>
           <Link className="Homepage-link" to='/signup' >SignUp</Link>

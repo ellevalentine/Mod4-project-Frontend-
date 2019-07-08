@@ -21,7 +21,8 @@ class SignInForm extends React.Component {
 //------------------------------------------------------------------------------------------------------------------  
   state = {
     username: '',
-    password: ''
+    password: '',
+    userId: ''
   }
 
 // handle submit function (signin)
