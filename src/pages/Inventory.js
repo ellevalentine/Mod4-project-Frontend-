@@ -80,6 +80,10 @@ class Inventory extends React.Component {
     </h1>
       <div style={this.style} className='user-list'>
         <h3>Here's your inventory:</h3>
+        <Button color='primary' variant='contained' onClick={addPot} >
+      Add Savings Pot
+       </Button>
+
         { inventory.length === 0 && <p>Sorry, you don't have any items.</p>}
         {
           inventory.map(item =>
