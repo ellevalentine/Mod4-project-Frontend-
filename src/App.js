@@ -25,7 +25,8 @@ class App extends Component {
   //------------------------------------------------------------------------------------------------------------------
   state = {
     // this is the initial state and when someone signsin this will be updated by the setState below
-    username: ""
+    username: "",
+    user: []
   };
   //------------------------------------------------------------------------------------------------------------------
 
@@ -35,6 +36,7 @@ class App extends Component {
   //update sign in since it was expecting a string now it will be getting a little object with username and id
   signin = user => {
     this.setState({ username: user.username });
+    this.setState({ user: user });
     localStorage.setItem("token", user.token); // add token
     this.props.history.push("/inventory");
   };
@@ -69,32 +71,39 @@ class App extends Component {
   }
 
   reloadTwitter = () => {
-    const twitter = document.querySelector('.twitter-container');
-    const script = document.createElement('script');
-    script.type = 'text/javascript';
-    script.src = 'https://platform.twitter.com/widgets.js';
+    const twitter = document.querySelector(".twitter-container");
+    const script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "https://platform.twitter.com/widgets.js";
     twitter.appendChild(script);
-  }
+  };
   //------------------------------------------------------------------------------------------------------------------
 
   // render component
   //------------------------------------------------------------------------------------------------------------------
   render() {
     const { signin, signout } = this;
-    const { username } = this.state; // so we can pass the username down to the header to welcome the user
+    const { username, user } = this.state; // so we can pass the username down to the header to welcome the user
 
     return (
       <div className="App">
-        <Header username={username} signout={signout} signin={signin}/>
+        <Header username={username} signout={signout} signin={signin} />
         <Switch>
-          <Route exact path="/" onChange={this.reloadTwitter} component={props => <HomePage {...props} />} />
+          <Route
+            exact
+            path="/"
+            onChange={this.reloadTwitter}
+            component={props => <HomePage {...props} />}
+          />
           <Route
             path="/signin"
             component={props => <SignInForm signin={signin} {...props} />}
           />
           <Route
             path="/inventory"
-            component={props => <Inventory username={username} {...props} />}
+            component={props => (
+              <Inventory username={username} user={user} {...props} />
+            )}
           />
           <Route
             path="/signup"
