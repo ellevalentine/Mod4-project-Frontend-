@@ -11,6 +11,8 @@ import SignInForm from "./pages/SignInForm";
 import Inventory from "./pages/Inventory";
 import SignUpForm from "./pages/SignUpForm";
 
+
+
 //grab the validate function from the api.js to use
 import { validate } from "./services/api";
 
@@ -54,6 +56,16 @@ class App extends Component {
   };
   //------------------------------------------------------------------------------------------------------------------
 
+  reloadTwitter = () => {
+    const twitter = document.querySelector(".twitter-container");
+    const script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "https://platform.twitter.com/widgets.js";
+    twitter.appendChild(script);
+  };
+
+
+
   // component did mount - validate user token
   //------------------------------------------------------------------------------------------------------------------
   //import validate function at top
@@ -63,20 +75,17 @@ class App extends Component {
       validate().then(data => {
         if (data.error) {
           alert(data.error);
+          
         } else {
           this.signin(data);
+          
         }
       });
     }
+    // this.reloadTwitter()
   }
 
-  reloadTwitter = () => {
-    const twitter = document.querySelector(".twitter-container");
-    const script = document.createElement("script");
-    script.type = "text/javascript";
-    script.src = "https://platform.twitter.com/widgets.js";
-    twitter.appendChild(script);
-  };
+
   //------------------------------------------------------------------------------------------------------------------
 
   // render component
