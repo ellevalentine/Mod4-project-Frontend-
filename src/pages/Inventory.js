@@ -6,24 +6,15 @@
 import React from 'react'
 
 import Item from '../components/Item'
-import Button from '@material-ui/core/Button'
-
 
 import {getInventory} from '../services/api'
-// import {Modal} from '../components/Modal'
-
-import {createPots} from '../services/api'
-
-
-
-
+import Button from "@material-ui/core/Button";
 
 //------------------------------------------------------------------------------------------------------------------
 // INVENTORY CLASS
 //------------------------------------------------------------------------------------------------------------------
  
 class Inventory extends React.Component {
-  
 
 // inital state  
 //------------------------------------------------------------------------------------------------------------------
@@ -71,40 +62,33 @@ class Inventory extends React.Component {
     }
   }
 
-  addPot = () => {
-
-    
-    console.log(this.props.user.id)
-    // Modal()
-    // createPots()
-
-
-  }
-
 // render component
 //------------------------------------------------------------------------------------------------------------------
   render () {
     const { inventory } = this.state
-    const { addPot } = this
 
     return (
-
-    
-
-
+      <div>
+      <h1 className="welcome-text">
+      {this.props.username ? `Welcome back, ${this.props.username}!` : "Welcome!"}
+      <br />
+      {/* {this.props.username && (
+        <Button onClick={this.props.signout} variant="contained" color="secondary">
+          SIGN OUT
+        </Button>
+      )} */}
+    </h1>
       <div style={this.style} className='user-list'>
         <h3>Here's your inventory:</h3>
-        <Button color='primary' variant='contained' onClick={addPot} >
-      Add Savings Pot
-       </Button>
-
         { inventory.length === 0 && <p>Sorry, you don't have any items.</p>}
         {
           inventory.map(item =>
-            <Item key={item.id} item={item}  />
+            <Item key={item.id} item={item} />
           )
         }
       </div>
+
+    </div>
     )
   }
 }

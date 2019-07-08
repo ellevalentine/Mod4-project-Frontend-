@@ -21,8 +21,7 @@ class SignInForm extends React.Component {
 //------------------------------------------------------------------------------------------------------------------  
   state = {
     username: '',
-    password: '',
-    userId: ''
+    password: ''
   }
 
 // handle submit function (signin)
@@ -53,14 +52,13 @@ handleChange = event =>
     const { handleChange, handleSubmit } = this
 
     return (
-      <div>
-        <p> Please Sign In:</p>
+      <div className="sign-in-up-form">
+        <h3 className="form-headers"> Please Sign In:</h3>
         <TextField
           id='usernameInput'
           label='Username'
           value={username}
           onChange={handleChange}
-          margin='normal'
           name='username'
         />
         <br />
@@ -74,7 +72,8 @@ handleChange = event =>
           type='password'
         />
         <br />
-        <Button onClick={handleSubmit} variant='contained' color='primary'>
+        <br />
+        <Button type="submit" onClick={handleSubmit} variant='contained' color='secondary'>
           SUBMIT
         </Button>
        
