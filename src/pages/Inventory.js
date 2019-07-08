@@ -100,6 +100,9 @@ class Inventory extends React.Component {
             Add Savings Pot
           </Button>
 
+          <br/>
+          <hr/>
+
           {inventory.length === 0 && <p>Sorry, you don't have any items.</p>}
           <div style={this.stylePots}>
           {inventory.map(item => (
