@@ -37,6 +37,7 @@ class Carousel extends React.Component {
   };
 
   previousSlide = () => {
+    if (this.state.index === 0) return;
     this.setState(currentState => ({
       index: currentState.index - 1,
       translateValue: currentState.translateValue + this.slideWidth()
