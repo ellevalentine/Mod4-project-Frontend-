@@ -52,11 +52,6 @@ class Item extends React.Component {
     const { classes, item } = this.props
 
     return (
-
-      
-
-
-
       <Card style={{margin: '10px'}} className={classes.card}>
         <CardHeader
           avatar={

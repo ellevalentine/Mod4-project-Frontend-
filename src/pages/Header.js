@@ -1,64 +1,72 @@
 //------------------------------------------------------------------------------------------------------------------
 // IMPORTS
 //------------------------------------------------------------------------------------------------------------------
- 
-import React from 'react'
 
-import { Link } from 'react-router-dom'
-import Button from '@material-ui/core/Button'
+import React from "react";
+
+import { Link } from "react-router-dom";
+// import Button from "@material-ui/core/Button";
 
 // import logo from '../logo.svg'
-
-
-
 
 //---------------------------------------------------------------------------------------------------------
 // HEADER FUNCTION
 //------------------------------------------------------------------------------------------------------------------
- 
-const Header = props =>
 
-  <header className='App-header'>
+class Header extends React.Component {
 
-  <nav className="navbar navbar-default navbar-fixed-top">
-			<div className="container">
-				<div className="navbar-header">
-					<div className="navbar-brand">
-          
-          <h1>Piggie's Pocket</h1>
-          <Link className="Homepage-link" to='/' >Home Page</Link> 
-          <Link className="Homepage-link" to='/signin' >SignIn</Link>
-          <Link className="Homepage-link" to='/signup' >SignUp</Link>
-          
+  sessionHeader = () => {
+    return this.props.username !== "" ? 
+      ( <div>
+        <Link onClick={this.props.signout} className="Homepage-link" to="/">
+          SignOut
+        </Link>
+        </div> )
+     : (<div>
+        <div className="navbar-link">
+         <Link className="Homepage-link" to="/signin">
+           SignIn
+         </Link>
+        </div> 
+       <div className="navbar-link">
+         <Link className="Homepage-link" to="/signup">
+           SignUp
+         </Link>
+      </div>  
+     </div>
+     )
+    }
+
+  render() {
+      return (
+      <header className="App-header">
+      <nav className="navbar">
+          <div className="navbar-link"> 
+          <Link to="/">
+            <img
+              src="https://images-na.ssl-images-amazon.com/images/I/61QQXwsBWmL._SX466_.jpg"
+              className="App-logo"
+              alt="logo"
+            />
+            </Link>
           </div>
-          
-				</div>
-			</div>
-		</nav>
-
-    <Link to='/'><img src="https://images-na.ssl-images-amazon.com/images/I/61QQXwsBWmL._SX466_.jpg" className='App-logo' alt='logo' /></Link>
-    <h1 className='App-title'>
-      {
-        props.username
-        ? `Welcome back, ${props.username}!`
-        : 'Welcome!'
-      }
-      <br/>
-      {
-       props.username && 
+          <div className="navbar-link title">
+            <Link to="/">
+            <h1>Piggy Bank</h1>
+            </Link>
+          </div>
+          <div className="navbar-link" >
+            <Link className="Homepage-link" to="/">
+              Home Page
+            </Link>
+          </div>
+          <div className="navbar-link">
+            {this.sessionHeader()}
+          </div>
+          </nav>
          
-          <Button onClick={props.signout} variant='contained' color='secondary'>
-             SIGN OUT   
-          </Button>
-      }
-    </h1>
-  </header>
-
-//------------------------------------------------------------------------------------------------------------------
-// EXPORT
-//------------------------------------------------------------------------------------------------------------------
- 
-export default Header
-
-
-// if user name is not false then reuturn welcome back ..... => if it is falsey then return welcome to react.
+      </header>
+  )
+  }
+}
+export default Header;
