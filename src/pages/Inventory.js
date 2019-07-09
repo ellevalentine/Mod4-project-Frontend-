@@ -102,6 +102,8 @@ class Inventory extends React.Component {
             ? `Welcome back, ${this.props.username}!`
             : "Welcome!"}
           <br />
+
+          <h3> {this.props.user.balance} </h3>
           {/* {this.props.username && (
         <Button onClick={this.props.signout} variant="contained" color="secondary">
           SIGN OUT
@@ -127,7 +129,7 @@ class Inventory extends React.Component {
               < NewPotForm userID={this.props.user.id} /> :
               <div style={this.stylePots}>
               {inventory.map(item => (
-                <Item key={item.id} item={item} />
+                <Item key={item.id} item={item}/>
               ))}
               </div>
             } 

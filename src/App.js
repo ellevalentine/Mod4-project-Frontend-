@@ -16,6 +16,9 @@ import CharityDonation from "./pages/CharityDonation";
 //grab the validate function from the api.js to use
 import { validate } from "./services/api";
 
+import PotDetails from './components/PotDetails'
+
+
 import "./App.css";
 
 //------------------------------------------------------------------------------------------------------------------
@@ -154,6 +157,7 @@ class App extends Component {
               <CharityDonation
                 user={user}
                 charities={charities}
+                user = {user}
                 getCharities={getCharities}
                 donateAndUpdateState={donateAndUpdateState}
                 {...props}
@@ -163,6 +167,12 @@ class App extends Component {
           <Route
             path="/signup"
             component={props => <SignUpForm signin={signin} {...props} />}
+          />
+           <Route
+            path="/potdetails"
+            component={props => (
+              <PotDetails user={user} {...props} />
+            )}
           />
           <Route component={() => <h1>Page not found.</h1>} />
         </Switch>

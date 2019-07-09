@@ -20,6 +20,11 @@ import CardMedia from '@material-ui/core/CardMedia';
 
 import Dashboard from "../components/Dashboard";
 
+// import PotDetails from "../components/PotDetails"
+import { Link } from '@material-ui/core';
+
+
+
 
 
 const styles = theme => ({
@@ -58,11 +63,18 @@ class Item extends React.Component {
     this.setState(state => ({ expanded: !state.expanded }))
   };
 
+
+  openDetails = ({item}) => {
+    
+  console.log("hello")
+    
+  }
+
   render () {
     const { classes, item } = this.props
 
     return (
-      <Card style={{margin: '10px'}} className={classes.card}>
+      <Card style={{margin: '10px'}} className={classes.card} onClick={ event => this.openDetails({item})}>
         <CardHeader
           avatar={
             <Avatar aria-label='Recipe' className={classes.avatar}>
@@ -107,7 +119,12 @@ class Item extends React.Component {
               Goal: £{item.goal} <br/> 
               Money by: {item.date} <br/>
 
-              <Dashboard />
+              {/* <PotDetails item={Item} /> */}
+        
+              <Dashboard item={item}/>
+
+
+             
 
 
             </Typography>
