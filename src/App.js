@@ -11,6 +11,7 @@ import SignInForm from "./pages/SignInForm";
 import Inventory from "./pages/Inventory";
 import SignUpForm from "./pages/SignUpForm";
 import CharityContainer from "./pages/CharityContainer";
+import CharityDonation from "./pages/CharityDonation";
 
 //grab the validate function from the api.js to use
 import { validate } from "./services/api";
@@ -31,17 +32,31 @@ class App extends Component {
     username: "",
     user: [],
     charities: [],
-
+    userBalance: 0
   };
-  //------------------------------------------------------------------------------------------------------------------
+
+  donateAndUpdateState = () => {
+    console.log("Hello World");
+  };
+  //update balance after donation function
+  // updateUserBalance = donation => {
+  //   this.setState({
+  //     userBalance: this.state.userBalance - donation,
+  //     charityBalance: this.state.charityBalance + donation
+  //   });
+  // };
+  //update balance for charity after donation
 
   // sign in
   //------------------------------------------------------------------------------------------------------------------
   // only one user can be signed in at once so when they are the username will be replaced eachtime
   //update sign in since it was expecting a string now it will be getting a little object with username and id
   signin = user => {
-    this.setState({ username: user.username });
-    this.setState({ user: user });
+    this.setState({
+      username: user.username,
+      user: user,
+      userBalance: user.balance
+    });
     localStorage.setItem("token", user.token); // add token
     this.props.history.push("/inventory");
   };
@@ -97,7 +112,7 @@ class App extends Component {
   // render component
   //------------------------------------------------------------------------------------------------------------------
   render() {
-    const { signin, signout, getCharities } = this;
+    const { signin, signout, getCharities, donateAndUpdateState } = this;
     const { username, user, charities } = this.state; // so we can pass the username down to the header to welcome the user
 
     return (
@@ -121,11 +136,26 @@ class App extends Component {
             )}
           />
           <Route
+            exact
             path="/charities"
             component={props => (
               <CharityContainer
+                user={user}
                 charities={charities}
                 getCharities={getCharities}
+                {...props}
+              />
+            )}
+          />
+          <Route
+            exact
+            path="/charities/:id"
+            component={props => (
+              <CharityDonation
+                user={user}
+                charities={charities}
+                getCharities={getCharities}
+                donateAndUpdateState={donateAndUpdateState}
                 {...props}
               />
             )}

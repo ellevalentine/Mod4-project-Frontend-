@@ -167,25 +167,23 @@ a:active {
   color: #222;
 }
 
-
-
 .modal {
   position: fixed;
   top: 0;
   left: 0;
-  width:100%;
+  width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.6);
 }
 
 .modal-main {
-  position:fixed;
+  position: fixed;
   background: white;
   width: 80%;
   height: auto;
-  top:50%;
-  left:50%;
-  transform: translate(-50%,-50%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .display-block {
@@ -196,13 +194,6 @@ a:active {
   display: none;
 }
 
-  
-
-.charities-tite {
-  /* add css to the charities title */
-}
-
-
 .charities-title {
   padding-top: 30px;
   justify-self: center;
@@ -210,6 +201,7 @@ a:active {
 
 .charity-box {
   padding: 30px;
+  text-align: center
 }
 
 .charity-details {
@@ -249,17 +241,54 @@ a:active {
 
 .details {
   color: #716f72;
-  font-weight: lighter;
+  font-size: x-large;
 }
 
-.charity-button {
-  float: right;
-}
+.view-charity {
 
-.donate {
-  float: left;
-  background-color: #3ab8ba;
-  font-size: 18px;
+  background-color: #1a7874;
+  font-size: 16px;
   border-radius: 5px;
-  padding-left: 5px;
+  padding: 10px;
+  margin-top: 10px;
+  color: white
+}
+
+.charity-donation-image {
+  height: 500px;
+  width: 500 px;
+  display: inline-flexbox;
+}
+
+.charity-donation-name {
+  font-family: "Raleway", sans-serif;
+  color: #1a7874;
+  padding-top: 20px;
+  padding-bottom: 0;
+  display: inline-block;
+  font-size: 80px;
+}
+
+.donation-details {
+  font-size: x-large;
+  text-align: left;
+}
+
+.donate-button {
+  float: left;
+  color: rgb(255, 255, 255);
+  background: #fa1ea6;
+  padding: 10px;
+  border-radius: 10%;
+}
+
+.ui.segment {
+  border: none;
+  box-shadow: none;
+  font-size: x-large;
+}
+
+.details-body {
+  font-weight: lighter;
+  color: #716f72;
 }

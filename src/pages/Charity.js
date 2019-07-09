@@ -1,8 +1,11 @@
 import React from "react";
+// import CharityDonation from "./CharityDonation";
+import { Redirect } from "react-router-dom";
 
 class Charity extends React.Component {
   state = {
-    showPage: false
+    showPage: false,
+    showDonatePage: false
   };
 
   showDetails = () => {
@@ -17,60 +20,34 @@ class Charity extends React.Component {
     });
   };
 
+  updateShowDonatePage = () => {
+    this.setState({
+      showDonatePage: true
+    });
+  };
+
   render() {
     const { charity } = this.props;
     console.log(this.props.charity.logo);
 
     return (
-      <div className="charity-box">
-        <h2 className="charity-name">{charity.name}</h2>
-        <img
-          className="charity-image"
-          src={require(`${charity.logo}`)}
-          alt={charity.name}
-        />
-        <br />
-        <br />
-        {this.state.showPage ? (
-          <div className="charity-details">
-            <h3>
-              Description:{" "}
-              <span className="details">{charity.description}</span>
-            </h3>
-            <h3>
-              Address: <span className="details">{charity.address}</span>
-            </h3>
-            <h3>
-              Webstie: <span className="details">{charity.website}</span>
-            </h3>
-            <button className="donate" onClick={() => console.log("hello")}>
-              Donate
-            </button>
-            <button className="charity-button" onClick={this.hideDetails}>
-              ▲
-            </button>
-          </div>
+      <div>
+        {this.state.showDonatePage ? (
+          <Redirect to={`/charities/${charity.id}`} />
         ) : (
-          <>
-            <div>
-              <button
-                color="secondary"
-                className="donate"
-                onClick={() => console.log("hello")}
-              >
-                Donate
-              </button>
-            </div>
-            <div>
-              <button
-                color="secondary"
-                className="charity-button"
-                onClick={this.showDetails}
-              >
-                ▼ info
-              </button>
-            </div>
-          </>
+          <div className="charity-box">
+            <h2 className="charity-name">{charity.name}</h2>
+            <img
+              className="charity-image"
+              src={require(`${charity.logo}`)}
+              alt={charity.name}
+            />
+            <button id="card-button" className="view-charity" onClick={this.updateShowDonatePage}>
+              Go to Charity
+            </button>
+            <br />
+            <br />
+          </div>
         )}
       </div>
     );
