@@ -43,10 +43,7 @@ class Charity extends React.Component {
             <h3>
               Webstie: <span className="details">{charity.website}</span>
             </h3>
-            <button
-              className="donate"
-              onClick={console.log("donate button clicked")}
-            >
+            <button className="donate" onClick={() => console.log("hello")}>
               Donate
             </button>
             <button className="charity-button" onClick={this.hideDetails}>
@@ -59,7 +56,7 @@ class Charity extends React.Component {
               <button
                 color="secondary"
                 className="donate"
-                onClick={console.log("donate button clicked")}
+                onClick={() => console.log("hello")}
               >
                 Donate
               </button>
