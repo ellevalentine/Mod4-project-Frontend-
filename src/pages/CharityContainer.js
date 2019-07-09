@@ -9,7 +9,11 @@ class CharityContainer extends React.Component {
         <h2 className="charities-title">Charities</h2>
         <div className="all-charities">
           {this.props.charities.map(charity => (
-            <Charity key={`charity-${charity.id}`} charity={charity} />
+            <Charity
+              key={`charity-${charity.id}`}
+              charity={charity}
+              user={this.props.user}
+            />
           ))}
         </div>
       </div>
