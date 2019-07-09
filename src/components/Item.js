@@ -18,6 +18,9 @@ import MoreVertIcon from '@material-ui/icons/MoreVert'
 
 import CardMedia from '@material-ui/core/CardMedia';
 
+import Dashboard from "../components/Dashboard";
+
+
 
 const styles = theme => ({
   card: {
@@ -101,8 +104,10 @@ class Item extends React.Component {
           <CardContent>
             <Typography paragraph variant='body2'>
               Description: {item.description} <br/>
-              Goal: £{item.goal} <br/>
-              Money by: {item.date}
+              Goal: £{item.goal} <br/> 
+              Money by: {item.date} <br/>
+
+              <Dashboard />
 
 
             </Typography>

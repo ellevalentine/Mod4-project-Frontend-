@@ -14,7 +14,7 @@ import { createPot } from '../services/api'
 
 
 //------------------------------------------------------------------------------------------------------------------
-// SIGN IN FORM CLASS
+// FORM CLASS
 //------------------------------------------------------------------------------------------------------------------
  
 class NewPotForm extends React.Component {
@@ -88,9 +88,9 @@ handleSubmit = event => {
           name='goal'
           type='number'
         />
-        <br />
+        <br /> <br/>
         Money rasied by:
-        <br />
+        <br /> <br/>
 
         <TextField
           id='potDate'
@@ -100,7 +100,7 @@ handleSubmit = event => {
           type='date'
         />
         <br />
-       
+       <br/>
         <Button type="submit" variant='contained' color='secondary'>
           Create Pot
         </Button>
