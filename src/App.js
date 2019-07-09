@@ -30,7 +30,8 @@ class App extends Component {
     // this is the initial state and when someone signsin this will be updated by the setState below
     username: "",
     user: [],
-    charities: []
+    charities: [],
+
   };
   //------------------------------------------------------------------------------------------------------------------
 
