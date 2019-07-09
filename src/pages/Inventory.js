@@ -10,6 +10,9 @@ import { getInventory } from "../services/api";
 import Button from "@material-ui/core/Button";
 import { createPots } from "../services/api";
 
+
+
+
 import NewPotForm from "../components/NewPot";
 
 
@@ -70,15 +73,26 @@ class Inventory extends React.Component {
   }
 
   addPot = () => {
-    console.log(this.props.user.id);
-    // Modal()
-    // createPots()
+    if (this.state.newpot){
+      this.setState({newpot: undefined})
+      this.value = "Add Savings Pot"
+    } else {
+      this.setState({newpot: this.props.user.id})
+      this.value = "All Pots"
+    }
   };
+
+
+//  change = () =>
+// {
+//     if (this.value=="Add Savings Pot") this.value = "All Pots";
+//     else this.value = "Add Savings Pot";
+// }
 
   // render component
   //------------------------------------------------------------------------------------------------------------------
   render() {
-    const { inventory } = this.state;
+    const { inventory, newpot } = this.state;
     const { addPot } = this;
 
     return (
@@ -96,21 +110,29 @@ class Inventory extends React.Component {
         </h1>
         <div style={this.style} className="user-list">
           <h3>Here's your inventory:</h3>
+
           <Button color="primary" variant="contained" onClick={addPot}>
             Add Savings Pot
           </Button>
 
+          <br/>
+
           {inventory.length === 0 && <p>Sorry, you don't have any items.</p>}
-          <div style={this.stylePots}>
-          {inventory.map(item => (
-            <Item key={item.id} item={item} />
-          ))}
-          </div>
+         
           
         </div>
+
         <div style={this.style}>
-            < NewPotForm userID={this.props.user.id} />
-            </div>
+            { newpot ?
+              < NewPotForm userID={this.props.user.id} /> :
+              <div style={this.stylePots}>
+              {inventory.map(item => (
+                <Item key={item.id} item={item} />
+              ))}
+              </div>
+            } 
+         </div>
+
       </div>
     );
   }
