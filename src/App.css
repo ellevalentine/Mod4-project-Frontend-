@@ -167,6 +167,7 @@ a:active {
 }
 
 
+
 .modal {
   position: fixed;
   top: 0;
@@ -192,4 +193,9 @@ a:active {
 
 .display-none {
   display: none;
+  
+
+.charities-tite {
+  /* add css to the charities title */
+
 }

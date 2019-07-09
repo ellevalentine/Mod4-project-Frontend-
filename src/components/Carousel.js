@@ -8,10 +8,7 @@ class Carousel extends React.Component {
     super();
 
     this.state = {
-      images: [
-        require("./are-you-ready-1.png"),
-        require("./are-you-ready-2.png")
-      ],
+      images: [require("./are-you-ready-1.png"), require("./holidays.png")],
       index: 0,
       translateValue: 0
     };

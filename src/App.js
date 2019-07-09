@@ -10,8 +10,7 @@ import Header from "./pages/Header";
 import SignInForm from "./pages/SignInForm";
 import Inventory from "./pages/Inventory";
 import SignUpForm from "./pages/SignUpForm";
-
-
+import CharityContainer from "./pages/Charity";
 
 //grab the validate function from the api.js to use
 import { validate } from "./services/api";
@@ -22,13 +21,16 @@ import "./App.css";
 // APP CLASS
 //------------------------------------------------------------------------------------------------------------------
 
+const charityUrl = "http://localhost:3000/charities";
+
 class App extends Component {
   // initial state
   //------------------------------------------------------------------------------------------------------------------
   state = {
     // this is the initial state and when someone signsin this will be updated by the setState below
     username: "",
-    user: []
+    user: [],
+    charities: []
   };
   //------------------------------------------------------------------------------------------------------------------
 
@@ -64,8 +66,6 @@ class App extends Component {
     twitter.appendChild(script);
   };
 
-
-
   // component did mount - validate user token
   //------------------------------------------------------------------------------------------------------------------
   //import validate function at top
@@ -75,24 +75,29 @@ class App extends Component {
       validate().then(data => {
         if (data.error) {
           alert(data.error);
-          
         } else {
           this.signin(data);
-          
         }
       });
     }
-    // this.reloadTwitter()
+    this.getCharities(); //are we invalidating the if statement here?
+    // this.reloadTwitter() // we need to mount something for the twitter feed and the welcome to reload when clicking the home page button
   }
 
-
   //------------------------------------------------------------------------------------------------------------------
+  //getcharities
+
+  getCharities = () => {
+    fetch(charityUrl)
+      .then(response => response.json())
+      .then(charities => this.setState({ charities: charities }));
+  };
 
   // render component
   //------------------------------------------------------------------------------------------------------------------
   render() {
-    const { signin, signout } = this;
-    const { username, user } = this.state; // so we can pass the username down to the header to welcome the user
+    const { signin, signout, getCharities } = this;
+    const { username, user, charities } = this.state; // so we can pass the username down to the header to welcome the user
 
     return (
       <div className="App">
@@ -112,6 +117,16 @@ class App extends Component {
             path="/inventory"
             component={props => (
               <Inventory username={username} user={user} {...props} />
+            )}
+          />
+          <Route
+            path="/charities"
+            component={props => (
+              <CharityContainer
+                charities={charities}
+                getCharities={getCharities}
+                {...props}
+              />
             )}
           />
           <Route
