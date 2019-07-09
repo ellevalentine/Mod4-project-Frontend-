@@ -1,5 +1,7 @@
 import React from "react";
 
+import CharityDash from '../components/charityDashBoard'
+
 class CharityDonation extends React.Component {
   state = {
     charity: this.props.charities.find(
@@ -45,9 +47,8 @@ class CharityDonation extends React.Component {
             </h4>
           </div>
           <div className="ui segment">
-            <button className="donate-button" onClick={()=> console.log("Elle Modal")}>
-              Donate
-            </button>
+           
+            <CharityDash user={this.props.user} charity={this.state.charity} />
           </div>
         </div>
       </div>
