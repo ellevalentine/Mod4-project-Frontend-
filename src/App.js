@@ -10,7 +10,7 @@ import Header from "./pages/Header";
 import SignInForm from "./pages/SignInForm";
 import Inventory from "./pages/Inventory";
 import SignUpForm from "./pages/SignUpForm";
-import CharityContainer from "./pages/Charity";
+import CharityContainer from "./pages/CharityContainer";
 
 //grab the validate function from the api.js to use
 import { validate } from "./services/api";
