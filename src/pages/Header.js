@@ -17,9 +17,16 @@ class Header extends React.Component {
   sessionHeader = () => {
     return this.props.username !== "" ? (
       <div>
-        <Link onClick={this.props.signout} className="Homepage-link" to="/">
-          SignOut
-        </Link>
+        <div className="navbar-link">
+          <Link className="Homepage-link" to="/inventory">
+            My Account
+          </Link>
+        </div>
+        <div className="navbar-link">
+          <Link onClick={this.props.signout} className="Homepage-link" to="/">
+            SignOut
+          </Link>
+        </div>
       </div>
     ) : (
       <div>
