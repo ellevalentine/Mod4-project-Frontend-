@@ -24,11 +24,6 @@ class Header extends React.Component {
     ) : (
       <div>
         <div className="navbar-link">
-          <Link className="Homepage-link" to="/charities">
-            Donate
-          </Link>
-        </div>
-        <div className="navbar-link">
           <Link className="Homepage-link" to="/signin">
             SignIn
           </Link>
@@ -63,6 +58,11 @@ class Header extends React.Component {
           <div className="navbar-link">
             <Link className="Homepage-link" to="/">
               Home Page
+            </Link>
+          </div>
+          <div className="navbar-link">
+            <Link className="Homepage-link" to="/charities">
+              Donate
             </Link>
           </div>
           <div className="navbar-link">{this.sessionHeader()}</div>
