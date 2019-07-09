@@ -1,29 +1,31 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 
-import Modal from "../components/Modal"
+
+import Dialog from '@material-ui/core/Dialog';
+import PotDetails from "../components/PotDetails"
+
+
 
 class Dashboard extends Component {
+
   state = { show: false };
 
-  showModal = () => {
-    this.setState({ show: true });
-  };
-
-  hideModal = () => {
-    this.setState({ show: false });
-  };
+  handleClick = () => {
+    this.setState({show: !this.state.show})
+  }
 
   render() {
+
     return (
         <main>
-          <h1>More detail</h1>
-          <Modal show={this.state.show} handleClose={this.hideModal}>
-            <p>Modal</p>
-            <p>Data</p>
-          </Modal>
-          <button type="button" onClick={this.showModal}>
-            open
+          <br/>
+          
+          <Dialog open={this.state.show} onClose={ () => {this.setState({show: false})}}>
+            <PotDetails item={this.props.item} />
+          </Dialog>
+          <button type="button" onClick={this.handleClick}>
+            More Details
           </button>
         </main>
     );
