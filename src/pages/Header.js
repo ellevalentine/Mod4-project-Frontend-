@@ -14,59 +14,61 @@ import { Link } from "react-router-dom";
 //------------------------------------------------------------------------------------------------------------------
 
 class Header extends React.Component {
-
   sessionHeader = () => {
-    return this.props.username !== "" ? 
-      ( <div>
+    return this.props.username !== "" ? (
+      <div>
         <Link onClick={this.props.signout} className="Homepage-link" to="/">
           SignOut
         </Link>
-        </div> )
-     : (<div>
+      </div>
+    ) : (
+      <div>
         <div className="navbar-link">
-         <Link className="Homepage-link" to="/signin">
-           SignIn
-         </Link>
-        </div> 
-       <div className="navbar-link">
-         <Link className="Homepage-link" to="/signup">
-           SignUp
-         </Link>
-      </div>  
-     </div>
-     )
-    }
+          <Link className="Homepage-link" to="/charities">
+            Donate
+          </Link>
+        </div>
+        <div className="navbar-link">
+          <Link className="Homepage-link" to="/signin">
+            SignIn
+          </Link>
+        </div>
+        <div className="navbar-link">
+          <Link className="Homepage-link" to="/signup">
+            SignUp
+          </Link>
+        </div>
+      </div>
+    );
+  };
 
   render() {
-      return (
+    return (
       <header className="App-header">
-      <nav className="navbar">
-          <div className="navbar-link"> 
-          <Link to="/">
-            <img
-              src="https://images-na.ssl-images-amazon.com/images/I/61QQXwsBWmL._SX466_.jpg"
-              className="App-logo"
-              alt="logo"
-            />
+        <nav className="navbar">
+          <div className="navbar-link">
+            <Link to="/">
+              <img
+                src="https://images-na.ssl-images-amazon.com/images/I/61QQXwsBWmL._SX466_.jpg"
+                className="App-logo"
+                alt="logo"
+              />
             </Link>
           </div>
           <div className="navbar-link title">
             <Link to="/">
-            <h1>Piggy Bank</h1>
+              <h1>Piggy Bank</h1>
             </Link>
           </div>
-          <div className="navbar-link" >
+          <div className="navbar-link">
             <Link className="Homepage-link" to="/">
               Home Page
             </Link>
           </div>
-          <div className="navbar-link">
-            {this.sessionHeader()}
-          </div>
-          </nav>
-         
+          <div className="navbar-link">{this.sessionHeader()}</div>
+        </nav>
       </header>
-  )
+    );
   }
 }
 export default Header;
