@@ -49,6 +49,7 @@ handleSubmit = event => {
     alert("Pot added")
   
     createPot(event.target.name.value, event.target.description.value, event.target.goal.value, event.target.date.value, this.state.userID )
+    .then( this.props.setInventory())
   
     // this.props.history.push('/signin')
 }
