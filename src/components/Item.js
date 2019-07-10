@@ -72,13 +72,13 @@ class Item extends React.Component {
 
   render () {
     const { classes, item } = this.props
-
+    
     return (
       <Card style={{margin: '10px'}} className={classes.card} onClick={ event => this.openDetails({item})}>
         <CardHeader
           avatar={
             <Avatar aria-label='Recipe' className={classes.avatar}>
-              {item.name[0].toUpperCase()}
+              {item.name && item.name[0].toUpperCase()}
             </Avatar>
           }
           action={
