@@ -9,6 +9,10 @@ import Item from "../components/Item";
 import { getInventory } from "../services/api";
 import Button from "@material-ui/core/Button";
 import { createPots } from "../services/api";
+import { updateSpending } from "../services/api";
+
+
+
 
 
 import OverAllChartsPage from "../components/overAllPieChart"
@@ -24,12 +28,13 @@ class Inventory extends React.Component {
   //------------------------------------------------------------------------------------------------------------------
   state = {
     inventory: [],
-    daily: 0,
-    weekly: 0,
-    monthly: 0
+    daily: 1,
+    weekly: 1,
+    monthly: 1
   };
 
   //------------------------------------------------------------------------------------------------------------------
+
 
 
   setPaymentstate = (event) => {
@@ -51,14 +56,22 @@ class Inventory extends React.Component {
       this.setState({daily: dailyTotal})
 
     } else if (choice === "weekly"){
-      debugger
+      
       this.setState({weekly: weeklyTotal})
 
-    } else if (choice === "montly"){
+    } else if (choice === "monthly"){
 
       this.setState({monthly: monthlyTotal})
 
     }
+
+    this.updatedState()
+
+  }
+
+  updatedState = () => {
+
+    updateSpending(this.state.daily, this.state.weekly, this.state.monthly, this.props.user.id)
 
   }
 
@@ -169,10 +182,10 @@ class Inventory extends React.Component {
                 <Item key={item.id} item={item} setPaymentstate={this.setPaymentstate}/>
               ))}
               </div>
-            } 
+          )} 
 
 
-          <OverAllChartsPage />
+          <OverAllChartsPage  daily={parseFloat(this.state.daily)} weekly={parseFloat(this.state.weekly)} monthly={parseFloat(this.state.monthly)} />
          </div>
 
       </div>
