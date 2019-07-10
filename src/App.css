@@ -201,7 +201,7 @@ a:active {
 
 .charity-box {
   padding: 30px;
-  text-align: center
+  text-align: center;
 }
 
 .charity-details {
@@ -245,13 +245,12 @@ a:active {
 }
 
 .view-charity {
-
   background-color: #1a7874;
   font-size: 16px;
   border-radius: 5px;
   padding: 10px;
   margin-top: 10px;
-  color: white
+  color: white;
 }
 
 .charity-donation-image {
@@ -291,4 +290,7 @@ a:active {
 .details-body {
   font-weight: lighter;
   color: #716f72;
+}
+
+.confirm-donation {
 }

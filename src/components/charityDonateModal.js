@@ -5,56 +5,50 @@ import React from "react";
 // import ChartsPage from './PieChart'
 
 const CharityModal = props => {
+  // confirmDonate = () => {
+  //     console.log("hello")
+  //     // alert("Thanks for Donating")
+  // }
 
-    // confirmDonate = () => {
-    //     console.log("hello")
-    //     // alert("Thanks for Donating")
-    // }
-
-//----------------------------------------------------------------------------------------------------------
+  //----------------------------------------------------------------------------------------------------------
   return (
     <div className="ui segment">
-      <div className="ui two column centered grid">
+      <div className="ui two column left aligned grid">
         <div className="row">
-          <div className="four wide column"></div>
-
-
+          <div />
           <h1>{props.charity.name}</h1>
-          <br/>
-          <br/>
-          
-
-          <p>Hi, {props.user.username} thanks for donating to: {props.charity.name}!</p>
-
+          <br />
+          <br />
+          <p>
+            Hi, {props.user.username} thanks for donating to:{" "}
+            {props.charity.name}!
+          </p>
           {/* <p>{props.charity.description}</p> */}
-
-        How much do you want to donate?
-
-                    <select id="myDonate">
-                    <option value="5"> £5.00 </option>
-                    <option value="10" >£10.00</option>
-                    <option value="15" >£15.00</option>
-                    <option value="15" >£20.00</option>
-                    <option value="15" >£25.00</option>
-                    <option value="15" >£35.00</option>
-                    <option value="15" >£45.00</option>
-                    <option value="15" >£50.00</option>
-                    </select>
-
-                    <br/>
-                    <br/>
-
-            <button className="donate-button" onClick={ () => {alert("Thanks for Donating")}}>
-                Confirm Donation
-            </button>
-
-
-
+          How much do you want to donate?
+          <select id="myDonate" className="confirm-donation">
+            <option value="5"> £5.00 </option>
+            <option value="10">£10.00</option>
+            <option value="15">£15.00</option>
+            <option value="15">£20.00</option>
+            <option value="15">£25.00</option>
+            <option value="15">£35.00</option>
+            <option value="15">£45.00</option>
+            <option value="15">£50.00</option>
+          </select>
+          <br />
+          <br />
+          <button
+            className="donate-button"
+            onClick={() => {
+              alert("Thanks for Donating");
+            }}
+          >
+            Confirm Donation
+          </button>
         </div>
       </div>
     </div>
   );
-
 };
 
 export default CharityModal;
