@@ -22,7 +22,7 @@ class Dashboard extends Component {
           <br/>
           
           <Dialog open={this.state.show} onClose={ () => {this.setState({show: false})}}>
-            <PotDetails item={this.props.item} />
+            <PotDetails item={this.props.item} setPaymentstate={this.props.setPaymentstate} />
           </Dialog>
           <button type="button" onClick={this.handleClick}>
             More Details

@@ -71,6 +71,7 @@ handleSubmit = event => {
           label='Pot Name'
         //   onChange={handleChange}
           name='name'
+          required
         />
         <br />
         <TextField
@@ -80,6 +81,7 @@ handleSubmit = event => {
           margin='normal'
           name='description'
           type='text'
+          required
         />
         <br />
         <TextField
@@ -88,6 +90,7 @@ handleSubmit = event => {
         //   onChange={handleChange}
           name='goal'
           type='number'
+          required
         />
         <br /> <br/>
         Money rasied by:
@@ -99,6 +102,7 @@ handleSubmit = event => {
         //   onChange={handleChange}
           name='date'
           type='date'
+          required
         />
         <br />
        <br/>
