@@ -288,3 +288,27 @@ a:active {
   font-weight: lighter;
   color: #716f72;
 }
+
+.user-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
+  font-family: "Quicksand", sans-serif;
+}
+
+.pots-style {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  font-family: "Quicksand", sans-serif;
+}
+
+.pots-font {
+  font-family: "Quicksand", sans-serif;
+}
+
+span.MuiTypography-root-153.MuiTypography-body2-161.MuiCardHeader-title-148 {
+  font-family: "Quicksand", sans-serif;
+  font-size: larger;
+}

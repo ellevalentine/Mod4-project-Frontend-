@@ -10,8 +10,7 @@ import { getInventory } from "../services/api";
 import Button from "@material-ui/core/Button";
 import { createPots } from "../services/api";
 
-
-import OverAllChartsPage from "../components/overAllPieChart"
+import OverAllChartsPage from "../components/overAllPieChart";
 
 import NewPotForm from "../components/NewPot";
 
@@ -31,48 +30,33 @@ class Inventory extends React.Component {
 
   //------------------------------------------------------------------------------------------------------------------
 
+  setPaymentstate = event => {
+    event.preventDefault();
 
-  setPaymentstate = (event) => {
-    event.preventDefault()
+    const choice = event.target.potSchedule.value.split("-")[0];
 
+    const amount = event.target.potSchedule.value.split("-")[1];
 
-    const choice = event.target.potSchedule.value.split("-")[0]
-
-    const amount = event.target.potSchedule.value.split("-")[1]
-
-    const dailyTotal = parseFloat(this.state.daily) + parseFloat(amount) 
-    const weeklyTotal = parseFloat(this.state.weekly) + parseFloat(amount) 
-    const monthlyTotal = parseFloat(this.state.monthly) + parseFloat(amount) 
+    const dailyTotal = parseFloat(this.state.daily) + parseFloat(amount);
+    const weeklyTotal = parseFloat(this.state.weekly) + parseFloat(amount);
+    const monthlyTotal = parseFloat(this.state.monthly) + parseFloat(amount);
 
     // debugger
 
-    if (choice === "daily"){
-
-      this.setState({daily: dailyTotal})
-
-    } else if (choice === "weekly"){
-      debugger
-      this.setState({weekly: weeklyTotal})
-
-    } else if (choice === "montly"){
-
-      this.setState({monthly: monthlyTotal})
-
+    if (choice === "daily") {
+      this.setState({ daily: dailyTotal });
+    } else if (choice === "weekly") {
+      debugger;
+      this.setState({ weekly: weeklyTotal });
+    } else if (choice === "montly") {
+      this.setState({ monthly: monthlyTotal });
     }
-
-  }
-
+  };
 
   //------------------------------------------------------------------------------------------------------------------
 
   // adding style
   //------------------------------------------------------------------------------------------------------------------
-  style = {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    flexWrap: "wrap"
-  };
 
   stylePots = {
     display: "flex",
@@ -136,16 +120,16 @@ class Inventory extends React.Component {
             ? `Welcome back, ${this.props.username}!`
             : "Welcome!"}
           <br />
-            <br/>
-            <hr/>
-          <h3> Account Balance: £{this.props.user.balance}.  </h3>
+          <br />
+          <hr />
+          <h3> Account Balance: £{this.props.user.balance}. </h3>
           {/* {this.props.username && (
         <Button onClick={this.props.signout} variant="contained" color="secondary">
           SIGN OUT
         </Button>
       )} */}
         </h1>
-        <div style={this.style} className="user-list">
+        <div className="user-list">
           <h3>Here's your inventory:</h3>
 
           <Button color="primary" variant="contained" onClick={addPot}>
@@ -157,24 +141,26 @@ class Inventory extends React.Component {
           {inventory.length === 0 && <p>Sorry, you don't have any items.</p>}
         </div>
 
-        <div style={this.style}>
+        <div className="user-list">
           {newpot ? (
             <NewPotForm
               userID={this.props.user.id}
               setInventory={this.setInventory}
             />
           ) : (
-            <div style={this.stylePots}>
+            <div className="pots-style">
               {inventory.map(item => (
-                <Item key={item.id} item={item} setPaymentstate={this.setPaymentstate}/>
+                <Item
+                  key={item.id}
+                  item={item}
+                  setPaymentstate={this.setPaymentstate}
+                />
               ))}
-              </div>
-            } 
-
+            </div>
+          )}
 
           <OverAllChartsPage />
-         </div>
-
+        </div>
       </div>
     );
   }
