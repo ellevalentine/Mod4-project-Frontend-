@@ -9,6 +9,10 @@ import Item from "../components/Item";
 import { getInventory } from "../services/api";
 import Button from "@material-ui/core/Button";
 import { createPots } from "../services/api";
+import { updateSpending } from "../services/api";
+
+
+
 
 import OverAllChartsPage from "../components/overAllPieChart";
 
@@ -23,9 +27,9 @@ class Inventory extends React.Component {
   //------------------------------------------------------------------------------------------------------------------
   state = {
     inventory: [],
-    daily: 0,
-    weekly: 0,
-    monthly: 0
+    daily: 1,
+    weekly: 1,
+    monthly: 1
   };
 
   //------------------------------------------------------------------------------------------------------------------
@@ -33,7 +37,12 @@ class Inventory extends React.Component {
   setPaymentstate = event => {
     event.preventDefault();
 
-    const choice = event.target.potSchedule.value.split("-")[0];
+
+  setPaymentstate = (event) => {
+    event.preventDefault()
+
+
+    const choice = event.target.potSchedule.value.split("-")[0]
 
     const amount = event.target.potSchedule.value.split("-")[1];
 
@@ -43,15 +52,30 @@ class Inventory extends React.Component {
 
     // debugger
 
-    if (choice === "daily") {
-      this.setState({ daily: dailyTotal });
-    } else if (choice === "weekly") {
-      debugger;
-      this.setState({ weekly: weeklyTotal });
-    } else if (choice === "montly") {
-      this.setState({ monthly: monthlyTotal });
+    if (choice === "daily"){
+
+      this.setState({daily: dailyTotal})
+
+    } else if (choice === "weekly"){
+      
+      this.setState({weekly: weeklyTotal})
+
+    } else if (choice === "monthly"){
+
+      this.setState({monthly: monthlyTotal})
+
     }
-  };
+
+    this.updatedState()
+
+  }
+
+  updatedState = () => {
+
+    updateSpending(this.state.daily, this.state.weekly, this.state.monthly, this.props.user.id)
+
+  }
+
 
   //------------------------------------------------------------------------------------------------------------------
 
@@ -156,11 +180,13 @@ class Inventory extends React.Component {
                   setPaymentstate={this.setPaymentstate}
                 />
               ))}
-            </div>
-          )}
+              </div>
+          )} 
 
-          <OverAllChartsPage />
-        </div>
+
+          <OverAllChartsPage  daily={parseFloat(this.state.daily)} weekly={parseFloat(this.state.weekly)} monthly={parseFloat(this.state.monthly)} />
+         </div>
+
       </div>
     );
   }

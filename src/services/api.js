@@ -74,6 +74,27 @@ export function createPot(name, description, goal, date, id) {
   }).then(resp => resp.json()); //
 }
 
+//------------------------------------------------------------------------------------------------------------------
+// update spending
+//------------------------------------------------------------------------------------------------------------------
+
+export function updateSpending(daily, weekly, monthly, user_id) {
+  debugger
+  return fetch(`http://localhost:3000/users/${user_id}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      daily: daily,
+      weekly: weekly,
+      monthly: monthly
+    })
+  })
+  // .then(resp => resp.json()); //
+}
+
+
 export function createCharityUser(userId, charityId, donation) {
   return fetch("http://localhost:3000/charity_users", {
     method: "POST",
