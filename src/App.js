@@ -14,7 +14,12 @@ import CharityContainer from "./pages/CharityContainer";
 import CharityDonation from "./pages/CharityDonation";
 
 //grab the validate function from the api.js to use
-import { validate, createUserCharity } from "./services/api";
+import {
+  validate,
+  createCharityUser
+  // updateUser,
+  // updateCharity
+} from "./services/api";
 
 import PotDetails from "./components/PotDetails";
 
@@ -38,16 +43,30 @@ class App extends Component {
 
   //find charity based on id and update that balance
 
-  donateAndUpdateState = event => {
-    event.preventDefault();
-    console.log("Hello");
-    let donation = parseInt(event.target[0].value);
-    console.log(event.target[0].value);
-    this.setState({
-      userBalance: this.state.user.balance - donation,
-      charityBalance: this.state.charityBalance + donation
-    });
+  // this.setState({
+  //   user: Object.assign({}, this.state.user, {
+  //     balance: this.state.user.balance - amountDonated
+  //   })
+  // });
 
+  donateAndUpdateState = (
+    event,
+    userId,
+    charityId,
+    userBalance,
+    charityBalance
+  ) => {
+    event.preventDefault();
+    let amountDonated = parseInt(event.target[0].value);
+    console.log(event.target[0].value);
+    console.log(charityId);
+    console.log(userId);
+
+    createCharityUser(userId, charityId, amountDonated).then(data =>
+      this.setState({ user: data.user, charities: data.charities })
+    );
+    // updateUser(userId, amountDonated, userBalance);
+    // updateCharity(charityId, amountDonated, charityBalance);
   };
 
   // sign in
@@ -57,8 +76,7 @@ class App extends Component {
   signin = user => {
     this.setState({
       username: user.username,
-      user: user,
-      userBalance: user.balance
+      user: user
     });
     localStorage.setItem("token", user.token); // add token
     this.props.history.push("/inventory");
@@ -157,7 +175,6 @@ class App extends Component {
               <CharityDonation
                 user={user}
                 charities={charities}
-                user={user}
                 getCharities={getCharities}
                 donateAndUpdateState={donateAndUpdateState}
                 {...props}

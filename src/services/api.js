@@ -74,23 +74,43 @@ export function createPot(name, description, goal, date, id) {
   }).then(resp => resp.json()); //
 }
 
-export function createUserCharity(user_id, charity_id, donation) {
-  return (
-    fetch("http://localhost:3000/charity_users"),
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        user_id: user_id,
-        charity_id: charity_id,
-        donation: donation
-      })
-    }.then(resp => resp.json())
-  );
+export function createCharityUser(userId, charityId, donation) {
+  return fetch("http://localhost:3000/charity_users", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      user_id: userId,
+      charity_id: charityId,
+      donation: donation
+    })
+  }).then(resp => resp.json());
 }
 
+// export function updateUser(userId, donation, balance) {
+//   return fetch(`http://localhost:3000/users/${userId}`, {
+//     method: "PATCH",
+//     headers: {
+//       "Content-Type": "application/json"
+//     },
+//     body: JSON.stringify({
+//       balance: balance - donation
+//     })
+//   }).then(resp => resp.json());
+// }
+
+// export function updateCharity(charityId, donation, balance) {
+//   return fetch(`http://localhost:3000/charities/${charityId}`, {
+//     method: "PATCH",
+//     headers: {
+//       "Content-Type": "application/json"
+//     },
+//     body: JSON.stringify({
+//       balance: balance + donation
+//     })
+//   }).then(resp => resp.json());
+// }
 //------------------------------------------------------------------------------------------------------------------
 // EXPORT
 //------------------------------------------------------------------------------------------------------------------

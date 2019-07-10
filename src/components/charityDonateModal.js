@@ -10,6 +10,10 @@ const CharityModal = props => {
   //     // alert("Thanks for Donating")
   // }
 
+  let userId = props.user.id;
+  let charityId = props.charity.id;
+  let userBalance = props.user.balance;
+  let charityBalance = props.charity.balance;
   //----------------------------------------------------------------------------------------------------------
   return (
     <div className="ui segment">
@@ -25,7 +29,17 @@ const CharityModal = props => {
           </p>
           {/* <p>{props.charity.description}</p> */}
           How much do you want to donate?
-          <form onSubmit={props.donate}>
+          <form
+            onSubmit={event =>
+              props.donate(
+                event,
+                userId,
+                charityId,
+                userBalance,
+                charityBalance
+              )
+            }
+          >
             <select id="myDonate" className="confirm-donation">
               <option value="5"> £5.00 </option>
               <option value="10">£10.00</option>
@@ -40,9 +54,9 @@ const CharityModal = props => {
             <br />
             <button
               className="donate-button"
-              // onClick={() => {
-              //   alert("Thanks for Donating");
-              // }}
+              onClick={() => {
+                alert("Thanks for Donating");
+              }}
             >
               Confirm Donation
             </button>
