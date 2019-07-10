@@ -10,13 +10,7 @@ import { getInventory } from "../services/api";
 import Button from "@material-ui/core/Button";
 import { createPots } from "../services/api";
 
-
-
-
 import NewPotForm from "../components/NewPot";
-
-
-
 
 //------------------------------------------------------------------------------------------------------------------
 // INVENTORY CLASS
@@ -73,21 +67,20 @@ class Inventory extends React.Component {
   }
 
   addPot = () => {
-    if (this.state.newpot){
-      this.setState({newpot: undefined})
-      this.value = "Add Savings Pot"
+    if (this.state.newpot) {
+      this.setState({ newpot: undefined });
+      this.value = "Add Savings Pot";
     } else {
-      this.setState({newpot: this.props.user.id})
-      this.value = "All Pots"
+      this.setState({ newpot: this.props.user.id });
+      this.value = "All Pots";
     }
   };
 
-
-//  change = () =>
-// {
-//     if (this.value=="Add Savings Pot") this.value = "All Pots";
-//     else this.value = "Add Savings Pot";
-// }
+  //  change = () =>
+  // {
+  //     if (this.value=="Add Savings Pot") this.value = "All Pots";
+  //     else this.value = "Add Savings Pot";
+  // }
 
   // render component
   //------------------------------------------------------------------------------------------------------------------
@@ -117,24 +110,22 @@ class Inventory extends React.Component {
             Add Savings Pot
           </Button>
 
-          <br/>
+          <br />
 
           {inventory.length === 0 && <p>Sorry, you don't have any items.</p>}
-         
-          
         </div>
 
-        <div style={this.style}>
-            { newpot ?
-              < NewPotForm userID={this.props.user.id} /> :
-              <div style={this.stylePots}>
+        <div style={this.style} className="pot-form">
+          {newpot ? (
+            <NewPotForm userID={this.props.user.id} />
+          ) : (
+            <div style={this.stylePots} className="pot-form">
               {inventory.map(item => (
-                <Item key={item.id} item={item}/>
+                <Item key={item.id} item={item} />
               ))}
-              </div>
-            } 
-         </div>
-
+            </div>
+          )}
+        </div>
       </div>
     );
   }

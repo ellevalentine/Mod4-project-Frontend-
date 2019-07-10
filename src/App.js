@@ -14,10 +14,9 @@ import CharityContainer from "./pages/CharityContainer";
 import CharityDonation from "./pages/CharityDonation";
 
 //grab the validate function from the api.js to use
-import { validate } from "./services/api";
+import { validate, createUserCharity } from "./services/api";
 
-import PotDetails from './components/PotDetails'
-
+import PotDetails from "./components/PotDetails";
 
 import "./App.css";
 
@@ -34,21 +33,22 @@ class App extends Component {
     // this is the initial state and when someone signsin this will be updated by the setState below
     username: "",
     user: [],
-    charities: [],
-    userBalance: 0
+    charities: []
   };
 
-  donateAndUpdateState = () => {
-    console.log("Hello World");
+  //find charity based on id and update that balance
+
+  donateAndUpdateState = event => {
+    event.preventDefault();
+    console.log("Hello");
+    let donation = parseInt(event.target[0].value);
+    console.log(event.target[0].value);
+    this.setState({
+      userBalance: this.state.user.balance - donation,
+      charityBalance: this.state.charityBalance + donation
+    });
+
   };
-  //update balance after donation function
-  // updateUserBalance = donation => {
-  //   this.setState({
-  //     userBalance: this.state.userBalance - donation,
-  //     charityBalance: this.state.charityBalance + donation
-  //   });
-  // };
-  //update balance for charity after donation
 
   // sign in
   //------------------------------------------------------------------------------------------------------------------
@@ -157,7 +157,7 @@ class App extends Component {
               <CharityDonation
                 user={user}
                 charities={charities}
-                user = {user}
+                user={user}
                 getCharities={getCharities}
                 donateAndUpdateState={donateAndUpdateState}
                 {...props}
@@ -168,11 +168,9 @@ class App extends Component {
             path="/signup"
             component={props => <SignUpForm signin={signin} {...props} />}
           />
-           <Route
+          <Route
             path="/potdetails"
-            component={props => (
-              <PotDetails user={user} {...props} />
-            )}
+            component={props => <PotDetails user={user} {...props} />}
           />
           <Route component={() => <h1>Page not found.</h1>} />
         </Switch>

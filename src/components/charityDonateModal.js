@@ -25,26 +25,28 @@ const CharityModal = props => {
           </p>
           {/* <p>{props.charity.description}</p> */}
           How much do you want to donate?
-          <select id="myDonate" className="confirm-donation">
-            <option value="5"> £5.00 </option>
-            <option value="10">£10.00</option>
-            <option value="15">£15.00</option>
-            <option value="15">£20.00</option>
-            <option value="15">£25.00</option>
-            <option value="15">£35.00</option>
-            <option value="15">£45.00</option>
-            <option value="15">£50.00</option>
-          </select>
-          <br />
-          <br />
-          <button
-            className="donate-button"
-            onClick={() => {
-              alert("Thanks for Donating");
-            }}
-          >
-            Confirm Donation
-          </button>
+          <form onSubmit={props.donate}>
+            <select id="myDonate" className="confirm-donation">
+              <option value="5"> £5.00 </option>
+              <option value="10">£10.00</option>
+              <option value="15">£15.00</option>
+              <option value="20">£20.00</option>
+              <option value="25">£25.00</option>
+              <option value="35">£35.00</option>
+              <option value="45">£45.00</option>
+              <option value="50">£50.00</option>
+            </select>
+            <br />
+            <br />
+            <button
+              className="donate-button"
+              // onClick={() => {
+              //   alert("Thanks for Donating");
+              // }}
+            >
+              Confirm Donation
+            </button>
+          </form>
         </div>
       </div>
     </div>

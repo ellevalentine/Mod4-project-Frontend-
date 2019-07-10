@@ -11,9 +11,6 @@ body {
   width: 25%;
   height: auto;
 }
-.welcome {
-  /* display: inline-block; */
-}
 
 .welcome-text {
   text-align: left;
@@ -290,7 +287,4 @@ a:active {
 .details-body {
   font-weight: lighter;
   color: #716f72;
-}
-
-.confirm-donation {
 }
