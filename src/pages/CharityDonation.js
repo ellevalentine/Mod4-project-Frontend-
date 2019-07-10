@@ -1,6 +1,6 @@
 import React from "react";
 
-import CharityDash from '../components/charityDashBoard'
+import CharityDash from "../components/charityDashBoard";
 
 class CharityDonation extends React.Component {
   state = {
@@ -47,8 +47,11 @@ class CharityDonation extends React.Component {
             </h4>
           </div>
           <div className="ui segment">
-           
-            <CharityDash user={this.props.user} charity={this.state.charity} />
+            <CharityDash
+              user={this.props.user}
+              charity={this.state.charity}
+              donate={this.props.donateAndUpdateState}
+            />
           </div>
         </div>
       </div>
@@ -56,13 +59,10 @@ class CharityDonation extends React.Component {
   };
 
   render() {
-    return ( 
-    <div>
-        {this.state.charity ? this.showDescription() : <h1>404</h1>} 
-    </div>
-    )
+    return (
+      <div>{this.state.charity ? this.showDescription() : <h1>404</h1>}</div>
+    );
   }
 }
-
 
 export default CharityDonation;

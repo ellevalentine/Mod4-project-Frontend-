@@ -14,10 +14,14 @@ import CharityContainer from "./pages/CharityContainer";
 import CharityDonation from "./pages/CharityDonation";
 
 //grab the validate function from the api.js to use
-import { validate } from "./services/api";
+import {
+  validate,
+  createCharityUser
+  // updateUser,
+  // updateCharity
+} from "./services/api";
 
-import PotDetails from './components/PotDetails'
-
+import PotDetails from "./components/PotDetails";
 
 import "./App.css";
 
@@ -34,21 +38,36 @@ class App extends Component {
     // this is the initial state and when someone signsin this will be updated by the setState below
     username: "",
     user: [],
-    charities: [],
-    userBalance: 0
+    charities: []
   };
 
-  donateAndUpdateState = () => {
-    console.log("Hello World");
+  //find charity based on id and update that balance
+
+  // this.setState({
+  //   user: Object.assign({}, this.state.user, {
+  //     balance: this.state.user.balance - amountDonated
+  //   })
+  // });
+
+  donateAndUpdateState = (
+    event,
+    userId,
+    charityId,
+    userBalance,
+    charityBalance
+  ) => {
+    event.preventDefault();
+    let amountDonated = parseInt(event.target[0].value);
+    console.log(event.target[0].value);
+    console.log(charityId);
+    console.log(userId);
+
+    createCharityUser(userId, charityId, amountDonated).then(data =>
+      this.setState({ user: data.user, charities: data.charities })
+    );
+    // updateUser(userId, amountDonated, userBalance);
+    // updateCharity(charityId, amountDonated, charityBalance);
   };
-  //update balance after donation function
-  // updateUserBalance = donation => {
-  //   this.setState({
-  //     userBalance: this.state.userBalance - donation,
-  //     charityBalance: this.state.charityBalance + donation
-  //   });
-  // };
-  //update balance for charity after donation
 
   // sign in
   //------------------------------------------------------------------------------------------------------------------
@@ -57,8 +76,7 @@ class App extends Component {
   signin = user => {
     this.setState({
       username: user.username,
-      user: user,
-      userBalance: user.balance
+      user: user
     });
     localStorage.setItem("token", user.token); // add token
     this.props.history.push("/inventory");
@@ -157,7 +175,6 @@ class App extends Component {
               <CharityDonation
                 user={user}
                 charities={charities}
-                user = {user}
                 getCharities={getCharities}
                 donateAndUpdateState={donateAndUpdateState}
                 {...props}
@@ -168,11 +185,9 @@ class App extends Component {
             path="/signup"
             component={props => <SignUpForm signin={signin} {...props} />}
           />
-           <Route
+          <Route
             path="/potdetails"
-            component={props => (
-              <PotDetails user={user} {...props} />
-            )}
+            component={props => <PotDetails user={user} {...props} />}
           />
           <Route component={() => <h1>Page not found.</h1>} />
         </Switch>
