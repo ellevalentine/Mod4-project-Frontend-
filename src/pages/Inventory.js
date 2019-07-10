@@ -116,9 +116,13 @@ class Inventory extends React.Component {
         </div>
 
         <div style={this.style}>
-            { newpot ?
-              < NewPotForm userID={this.props.user.id} setInventory={this.setInventory}/> :
-              <div style={this.stylePots}>
+          {newpot ? (
+            <NewPotForm
+              userID={this.props.user.id}
+              setInventory={this.setInventory}
+            />
+          ) : (
+            <div style={this.stylePots}>
               {inventory.map(item => (
                 <Item key={item.id} item={item} />
               ))}
