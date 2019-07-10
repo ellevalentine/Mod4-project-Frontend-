@@ -57,24 +57,22 @@ const styles = theme => ({
 })
 
 class Item extends React.Component {
-  state = { expanded: false }
+  state = { expanded: false}
 
   handleExpandClick = () => {
     this.setState(state => ({ expanded: !state.expanded }))
   };
 
 
-  openDetails = ({item}) => {
-    
-  console.log("hello")
-    
-  }
+
+
+
 
   render () {
     const { classes, item } = this.props
     
     return (
-      <Card style={{margin: '10px'}} className={classes.card} onClick={ event => this.openDetails({item})}>
+      <Card style={{margin: '10px'}} className={classes.card} >
         <CardHeader
           avatar={
             <Avatar aria-label='Recipe' className={classes.avatar}>
@@ -121,7 +119,7 @@ class Item extends React.Component {
 
               {/* <PotDetails item={Item} /> */}
         
-              <Dashboard item={item}/>
+              <Dashboard item={item} setPaymentstate={this.props.setPaymentstate}/>
 
 
              

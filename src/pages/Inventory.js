@@ -10,6 +10,9 @@ import { getInventory } from "../services/api";
 import Button from "@material-ui/core/Button";
 import { createPots } from "../services/api";
 
+
+import OverAllChartsPage from "../components/overAllPieChart"
+
 import NewPotForm from "../components/NewPot";
 
 //------------------------------------------------------------------------------------------------------------------
@@ -20,8 +23,46 @@ class Inventory extends React.Component {
   // inital state
   //------------------------------------------------------------------------------------------------------------------
   state = {
-    inventory: []
+    inventory: [],
+    daily: 0,
+    weekly: 0,
+    monthly: 0
   };
+
+  //------------------------------------------------------------------------------------------------------------------
+
+
+  setPaymentstate = (event) => {
+    event.preventDefault()
+
+
+    const choice = event.target.potSchedule.value.split("-")[0]
+
+    const amount = event.target.potSchedule.value.split("-")[1]
+
+    const dailyTotal = parseFloat(this.state.daily) + parseFloat(amount) 
+    const weeklyTotal = parseFloat(this.state.weekly) + parseFloat(amount) 
+    const monthlyTotal = parseFloat(this.state.monthly) + parseFloat(amount) 
+
+    // debugger
+
+    if (choice === "daily"){
+
+      this.setState({daily: dailyTotal})
+
+    } else if (choice === "weekly"){
+      debugger
+      this.setState({weekly: weeklyTotal})
+
+    } else if (choice === "montly"){
+
+      this.setState({monthly: monthlyTotal})
+
+    }
+
+  }
+
+
   //------------------------------------------------------------------------------------------------------------------
 
   // adding style
@@ -95,8 +136,9 @@ class Inventory extends React.Component {
             ? `Welcome back, ${this.props.username}!`
             : "Welcome!"}
           <br />
-
-          <h3> {this.props.user.balance} </h3>
+            <br/>
+            <hr/>
+          <h3> Account Balance: £{this.props.user.balance}.  </h3>
           {/* {this.props.username && (
         <Button onClick={this.props.signout} variant="contained" color="secondary">
           SIGN OUT
@@ -124,11 +166,15 @@ class Inventory extends React.Component {
           ) : (
             <div style={this.stylePots}>
               {inventory.map(item => (
-                <Item key={item.id} item={item} />
+                <Item key={item.id} item={item} setPaymentstate={this.setPaymentstate}/>
               ))}
-            </div>
-          )}
-        </div>
+              </div>
+            } 
+
+
+          <OverAllChartsPage />
+         </div>
+
       </div>
     );
   }

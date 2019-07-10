@@ -127,11 +127,20 @@ const neededMoney = props.item.goal
                   </div>
                   <div className="column">
                     <i />
-                    <select id="mySelect">
-                    <option value={daysTillGoal}>Daily</option>
-                    <option value={weeksTillGoal}  >Weekly</option>
-                    <option value={monthsTillGoal} >Montly</option>
+
+                    <form onSubmit={props.setPaymentstate} >
+{/* add on submit */}
+                    <select name='potSchedule' id="mySelect" >
+                      <option value={"daily-"+perDayRoundedUp}>Daily</option>
+                      <option value={"weekly-"+perWeekRoundedUp}  >Weekly</option>
+                      <option value={"monthly-"+perMonthRoundedUp} >Montly</option>
                     </select>
+                    
+                    <button onClick={()=>{alert("payment confrimed!")}}>
+                      Confirm
+                    </button>
+
+                    </form>
                     
                     <hr/>
 
