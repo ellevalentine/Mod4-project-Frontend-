@@ -23,7 +23,7 @@ class TwitterFeed extends React.Component {
         <a
           className="twitter-timeline"
           // data-width="250"
-          // data-height="675"
+          data-height="675"
           href="https://twitter.com/ftmoney?ref_src=twsrc%5Etfw"
         >
           Tweets by ftmoney
