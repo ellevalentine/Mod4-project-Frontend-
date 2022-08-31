@@ -7,7 +7,7 @@
     "@material-ui/icons": "^3.0.1",
     "mdbreact": "^4.18.0",
     "moment": "^2.24.0",
-    "moment-timezone": "^0.5.26",
+    "moment-timezone": "^0.5.35",
     "react": "^16.6.1",
     "react-dom": "^16.6.1",
     "react-load-script": "0.0.6",
